@@ -1,15 +1,16 @@
 Feature: As a data consumer, I want the user information are stored in mySql DB correctly in users table.
   Background:
-    Given Establish the database connection
-  @us01 @db
+    Given Establish the database connection. SM
+
+  @wip @db
   Scenario: verify users has unique IDs
-    When Execute query to get all IDs from users
-    Then verify all users has unique ID
+    When Execute query to get all IDs from users. SM
+    Then verify all users has unique ID. SM
 
 
   Scenario: verify users table columns
-    When Execute query to get all columns
-    Then verify the below columns are listed in result
+    When Execute query to get all columns. SM
+    Then verify the below columns are listed in result. SM
 
       | id            |
       | full_name     |
