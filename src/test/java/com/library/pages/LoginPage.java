@@ -13,7 +13,10 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "inputEmail")
+    //@FindBy(id = "inputEmail") // this is orig
+
+   // @FindBy(css = "label[for=\"inputEmail\"]")
+   @FindBy(xpath = "//*[@id='inputEmail']") // screenshot in folder / wasn't working so revised
     public WebElement emailBox;
 
     @FindBy(id = "inputPassword")
@@ -21,10 +24,24 @@ public class LoginPage {
 
     @FindBy(tagName = "button")
     public WebElement loginButton;
+/*
+
+    public void login(userType){
+
+        String username= ConfigurationReader.getProperty("student"+"_username");
+        String password=ConfigurationReader.getProperty("student"+"_password");
+
+         emailBox.sendKeys("student");
+        passwordBox.sendKeys("student");
+        loginButton.click();
+ */
+
+/*
+
+orig:
 
 
-
-    public void login(String userType){
+   public void login(String userType){
 
         String username= ConfigurationReader.getProperty(userType+"_username");
         String password=ConfigurationReader.getProperty(userType+"_password");
@@ -33,6 +50,23 @@ public class LoginPage {
         emailBox.sendKeys(username);
         passwordBox.sendKeys(password);
         loginButton.click();
+
+
+ */
+public void login(String userType){
+
+        String username= ConfigurationReader.getProperty(userType+"_username");
+        String password=ConfigurationReader.getProperty(userType+"_password");
+
+/*
+orig: 8;52
+
+
+ */
+        emailBox.sendKeys(username);
+        passwordBox.sendKeys(password);
+        loginButton.click();
+
 
     }
 
