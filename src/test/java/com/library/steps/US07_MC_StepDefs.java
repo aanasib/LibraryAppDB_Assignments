@@ -21,39 +21,46 @@ public class US07_MC_StepDefs {
 
     String bookName;
     String student;
-
-
-    @Given("The {string} on the main page")
-    public void theOnTheMainPage(String userType) {
+    @Given("the {string} on the home page. MC")
+    public void theOnTheHomePageMC(String userType) {
         BrowserUtil.waitFor(1);
         loginPage.login(userType);
         BrowserUtil.waitFor(1);
         student = userType;
     }
-    @Given("the user navigates to {string} page")
-    public void theUserNavigatesToPage(String page) {
+
+    @And("the user navigates to {string} page. MC")
+    public void theUserNavigatesToPageMC(String page) {
         bookPage.navigateModule(page);
     }
-
-
-  /*
-  //8:17 am
-    @Given("the user searches for {string} book")
-    public void theUserSearchesForBook(String name) {
-        bookName = "Head First Java";
+    @And("the user searches for {string} book. MC")
+    public void theUserSearchesForBookMC(String name) {
+        bookName = name;
         bookPage.search.sendKeys(bookName);
         BrowserUtil.waitFor(1);
+
     }
 
-   */
-    @When("the user clicks Borrow Book")
-    public void theUserClicksBorrowBook() {
+
+    /*
+    //8:17 am
+      @Given("the user searches for {string} book")
+      public void theUserSearchesForBook(String name) {
+          bookName = "Head First Java";
+          bookPage.search.sendKeys(bookName);
+          BrowserUtil.waitFor(1);
+      }
+
+     */
+    @When("the user clicks Borrow Book. MC")
+    public void theUserClicksBorrowBookMC() {
         BrowserUtil.waitFor(1);
         bookPage.borrowBook(bookName);
         BrowserUtil.waitFor(1);
     }
-    @Then("verify that book is shown in {string} page")
-    public void verifyThatBookIsShownInPage(String borrowingPage) {
+    @Then("verify that book is shown in {string} page. MC")
+    public void verifyThatBookIsShownInPageMC(String borrowingPage) {
+
         BorrowedBooksPage borrowedBooksPage = new BorrowedBooksPage();// because i need this class only in this step
         bookPage.navigateModule(borrowingPage);
 
@@ -61,8 +68,9 @@ public class US07_MC_StepDefs {
         Assert.assertTrue(BrowserUtil.getElementsText(borrowedBooksPage.allBorrowedBooksName).contains(bookName));
         BrowserUtil.waitFor(1);
     }
-    @Then("verify logged student has same book in database")
-    public void verifyLoggedStudentHasSameBookInDatabase() {
+    @And("verify logged student has same book in database. MC")
+    public void verifyLoggedStudentHasSameBookInDatabaseMC() {
+
 
         String query =  "select full_name,b.name,bb.borrowed_date from users u inner join book_borrow bb on u.id = bb.user_id inner join books b on bb.book_id = b.id where full_name='Test Student 5' order by 3 desc";
 
@@ -76,13 +84,20 @@ public class US07_MC_StepDefs {
 
     }
 
-    @And("the user searches book name called {string}")
-    public void theUserSearchesForBook(String name) {
-        bookName = name;
-        bookPage.search.sendKeys(bookName);
-        BrowserUtil.waitFor(1);
+
+
+
+
+
+
 
     }
+
+
+
+
+
+
 
 
     /*
@@ -140,9 +155,9 @@ public class US07_MC_StepDefs {
 
     }*/
 
-   // @And("the user searches for {string} book MC")
-   // public void theUserSearchesForBookMC(String arg0) {
-  //  }
+    // @And("the user searches for {string} book MC")
+    // public void theUserSearchesForBookMC(String arg0) {
+    //  }
 
 /*
     @Given("the {string} on the home page. MC")
@@ -294,6 +309,7 @@ public class US07_MC_StepDefs {
     }
 
     */
+
 
 
 }
