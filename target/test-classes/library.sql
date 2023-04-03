@@ -21,7 +21,11 @@ from book_borrow bb
 group by name
 order by 2 desc;
 -- US06
-
+SELECT books.name, isbn, year, author, bc.name
+from books
+         join book_categories bc
+              on books.book_category_id = bc.id
+where books.name = 'KhaledaBook' and isbn='2255' and year=2022 and author='Attia' and bc.name='Action and Adventure';
 -- US07
 select full_name,b.name,bb.borrowed_date from users u
                                                   inner join book_borrow bb on u.id = bb.user_id
