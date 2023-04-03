@@ -16,7 +16,11 @@ select * from books where name = 'AttiaNasib';
 -- US05
 
 -- US06
-
+SELECT books.name, isbn, year, author, bc.name
+from books
+         join book_categories bc
+              on books.book_category_id = bc.id
+where books.name = 'KhaledaBook' and isbn='2255' and year=2022 and author='Attia' and bc.name='Action and Adventure';
 -- US07
 
 
